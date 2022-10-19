@@ -20,7 +20,7 @@ Pone=function(n,k,strategy,nreps=10000){
       }
       box <- sample(1:n)
     }
-    print(a/nreps)
+    print(a/nreps) # give the probability of strategy 1
   }
     
   if (strategy==2){

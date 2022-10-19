@@ -18,25 +18,27 @@ Pone=function(n,k,strategy,nreps=10000){
       if (num_of_open<=(n/2)){
         num_of_success=num_of_success+1
       }
-      box <- sample(1:n)
+      box = sample(1:n)
     }
     print(a/nreps)
   }
     
-  if (strategy==2){
+   if (strategy==2){
     for (i in c(1:nreps)){
-      time=0
-      number=sample(n,1)
+      num_of_open=0   #record the number of open
+      number=sample(n,1) #choose a box randomly
+      #prisoner starts at box randomly, and if the card number of the box is not their prisoner number, they go to the box which number
+      is the card number of the first box, open it and repeat the process until they have found the card their number on it.
       while (box[number]!=k && time<=(n/2)){
         time = time+1
         number = box[number]
       }
-      if (time<=(n/2)){
-        a=a+1
+      if (num_of_open<=(n/2)){
+        num_of_success=num_of_success+1
       }
-      box <- sample(1:n)
+      box = sample(1:n) #Random box placement
     }
-    print(a/nreps)
+    print(num_of_success/nreps)
   }
   
   if (strategy==3){  # begin with strategy 3
@@ -45,7 +47,7 @@ Pone=function(n,k,strategy,nreps=10000){
       if(k %in% box[number]){
         num_of_success=num_of_success+1  
      }
-     box <- sample(1:n)  # pick a box randomly
+     box = sample(1:n)  # pick a box randomly
      #  open n boxes at random, checking each card for their number
     }
     print(num_of_success/nreps)  # calculate the probability of strategy 3

@@ -20,7 +20,7 @@ Pone=function(n,k,strategy,nreps=10000){
       }
       box <- sample(1:n)
     }
-    print(a/nreps) # give the probability of strategy 1
+    print(a/nreps)
   }
     
   if (strategy==2){
@@ -39,15 +39,16 @@ Pone=function(n,k,strategy,nreps=10000){
     print(a/nreps)
   }
   
-  if (strategy==3){
+  if (strategy==3){  # begin with strategy 3
     for(i in c(1:nreps)){
-      number=sample(n,n/2)
+      number=sample(n,n/2)  # open n/2 boxes from n boxes
       if(k %in% box[number]){
-        a=a+1
-      }
-     box <- sample(1:n) 
+        num_of_success=num_of_success+1  
+     }
+     box <- sample(1:n)  # pick a box randomly
+     #  open n boxes at random, checking each card for their number
     }
-    print(a/nreps)
+    print(num_of_success/nreps)  # calculate the probability of strategy 3
   }
   
   }

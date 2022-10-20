@@ -166,6 +166,8 @@ Pall=function(n,strategy,nreps=10000){
   }
 }
 
+# Question 3
+# example for n=5 and n=50
 Pall(5,1,10000)    
 Pall(50,1,10000)
 Pall(5,2,10000)

@@ -69,7 +69,6 @@ Pone(50,1,3,10000)
 success=function(n,k,strategy,box){
   N=2*n  #total number of prisoners
   if(k<=N){
-    box=sample(1:N) #randomly choose card
     num_of_success=0 #Record whether an experiment is successful
     #strategy 1 The first box opened was the prisoner's number
     if(strategy==1){
@@ -108,11 +107,11 @@ success=function(n,k,strategy,box){
   }else
     return("wrong")
 }
-success(5,12,strategy,box)
 
 Pall=function(n,strategy,nreps=10000){
   N=2*n #total number of prisoners
   c=0 # Record whether all prisoners can succeed
+  box=sample(1:N)
   #strategy 1 The first box opened was the prisoner's number
   if(strategy==1){
     for(i in c(1:nreps)){
@@ -125,8 +124,8 @@ Pall=function(n,strategy,nreps=10000){
       if(k==(N+1)){ 
         c=c+1 
       }
-     box=sample(1:N) 
-      #repeat nreps times，calculate the total times of success of all prisoners
+    box=sample(1:N) 
+    #repeat nreps times，calculate the total times of success of all prisoners
     }
     print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c / nreps))
   }
@@ -142,8 +141,8 @@ Pall=function(n,strategy,nreps=10000){
       if(k==(N+1)){
         c=c+1
       }
-    box=sample(1:N) 
-      #repeat nreps times，calculate the total times of success of all prisoners
+     box=sample(1:N) 
+     #repeat nreps times，calculate the total times of success of all prisoners
     }
     print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c/nreps))
   }
@@ -159,21 +158,12 @@ Pall=function(n,strategy,nreps=10000){
       if(k==(N+1)){
         c=c+1
       }
-    box=sample(1:N)
-      #repeat nreps times，calculate the total times of success of all prisoners
+     box=sample(1:N)
+     #repeat nreps times，calculate the total times of success of all prisoners
     }
     print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c/nreps))
   }
 }
-
-# Question 3
-# example for n=5 and n=50
-Pall(5,1,10000)    
-Pall(50,1,10000)
-Pall(5,2,10000)
-Pall(50,2,10000)
-Pall(5,3,10000)
-Pall(50,3,10000)
 
 #Question 4
 #It improves their odds of a random chance by nearly 30 orders of mangnitude. 

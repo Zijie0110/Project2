@@ -66,18 +66,18 @@ Pone(50,1,3,10000)
 
 # Question 2
 # Use the function success to judge whether each prisoner can succeed in an experiment
-success=function(n,k,strategy){
+success=function(n,k,strategy,box){
   N=2*n  #total number of prisoners
   if(k<=N){
-    card=sample(1:N) #randomly choose card
+    box=sample(1:N) #randomly choose card
     num_of_success=0 #Record whether an experiment is successful
     #strategy 1 The first box opened was the prisoner's number
     if(strategy==1){
-      num_of_open=0 #record the number of open
+      num_of_open=1 #record the number of open
       number=k  #Open the first box. The number of box is the prisoner number. i.e.k
-      while (card[number]!=k & num_of_open<=(n)){
+      while (box[number]!=k & num_of_open<=(n)){
         num_of_open=num_of_open+1 
-        number=card[number]
+        number=box[number]
       }
       if(num_of_open<=(n)){
         num_of_success=1 #prisoner success
@@ -86,11 +86,11 @@ success=function(n,k,strategy){
     }
     #strategy 2 The first box opened was random
     if(strategy==2){
-      num_of_open=0 #record the number of open
+      num_of_open=1 #record the number of open
       number=sample(N,1)  #choose a box randomly
-      while (card[number]!=k & num_of_open<=(n)){
+      while (box[number]!=k & num_of_open<=(n)){
         num_of_open=num_of_open+1
-        number=card[number]
+        number=box[number]
       }
       if(num_of_open<=(n)){
         num_of_success=1 #prisoner Success
@@ -100,7 +100,7 @@ success=function(n,k,strategy){
     #strategy 3 Open n boxes randomly
     if(strategy==3){
       number=sample(N,n)
-      if(k %in% card[number]){
+      if(k %in% box[number]){
         num_of_success=1
       }
       return(num_of_success)
@@ -108,7 +108,7 @@ success=function(n,k,strategy){
   }else
     return("wrong")
 }
-success(5,12,strategy)
+success(5,12,strategy,box)
 
 Pall=function(n,strategy,nreps=10000){
   N=2*n #total number of prisoners
@@ -118,14 +118,14 @@ Pall=function(n,strategy,nreps=10000){
     for(i in c(1:nreps)){
       k=1 # The number of the first prisoner who opened the box is 1
       # Judge whether each prisoner can succeed
-      while(success(n,k,1)==1 & k<=N){ 
+      while(success(n,k,1,box)==1 & k<=N){ 
         k=k+1
       }
       # Record the number of successful prisoners in each experiment
       if(k==(N+1)){ 
         c=c+1 
       }
-      box=sample(1:N) 
+     box=sample(1:N) 
       #repeat nreps times，calculate the total times of success of all prisoners
     }
     print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c / nreps))
@@ -135,31 +135,31 @@ Pall=function(n,strategy,nreps=10000){
     for(i in c(1:nreps)){
       k=1 # The number of the first prisoner who opened the box is 1
       # Judge whether each prisoner can succeed
-      while(success(n,k,2)==1 & k<=N){
+      while(success(n,k,2,box)==1 & k<=N){
         k=k+1
       }
       # Record the number of successful prisoners in each experiment
       if(k==(N+1)){
         c=c+1
       }
-      box=sample(1:N) 
+    box=sample(1:N) 
       #repeat nreps times，calculate the total times of success of all prisoners
     }
     print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c/nreps))
   }
-  
+  #strategy 3 Open n boxes randomly
   if(strategy==3){
     for(i in c(1:nreps)){
       k=1
       # Judge whether each prisoner can succeed
-      while(success(n,k,3)==1 & k<=N){
+      while(success(n,k,3,box)==1 & k<=N){
         k=k+1
       }
       # Record the number of successful prisoners in each experiment
       if(k==(N+1)){
         c=c+1
       }
-      box=sample(1:N)
+    box=sample(1:N)
       #repeat nreps times，calculate the total times of success of all prisoners
     }
     print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c/nreps))

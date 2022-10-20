@@ -45,7 +45,7 @@ Pone=function(n,k,strategy,nreps=10000){
   
   if (strategy==3){  # begin with strategy 3
     for(i in c(1:nreps)){
-      number=sample(N,n)  # open n/2 boxes from n boxes
+      number=sample(N,n)  # open n boxes from n boxes
       if(k %in% box[number]){
         num_of_success=num_of_success+1  
       }

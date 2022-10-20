@@ -28,7 +28,7 @@ Pone=function(n,k,strategy,nreps=10000){
       num_of_open=0   #record the number of open
       number=sample(n,1) #choose a box randomly
       #prisoner starts at box randomly, and if the card number of the box is not their prisoner number, they go to the box which number
-      is the card number of the first box, open it and repeat the process until they have found the card their number on it.
+      #is the card number of the first box, open it and repeat the process until they have found the card their number on it.
       while (box[number]!=k && time<=(n/2)){
         time = time+1
         number = box[number]
@@ -59,3 +59,30 @@ Pone=function(n,k,strategy,nreps=10000){
 Pone(500,1,3,10000)    
 Pone(50,1,3,10000)
 Pone(5,1,3,10000)
+
+
+#question 5
+dloop=function(n,nreps) {
+  num_of_prisoners=c(1:(2*n))
+  num_of_count=matrix(0,nrow=nreps,ncol=(2*n)) #create a all-0 matirx with nrep rows and 2*n columns)
+  for (i in 1:nreps){
+    box=sample(1:(2*n)) #pick a number randomly
+    for (j in num_of_prisoners){
+      num_of_open=1
+      box_position=vector(length=(2*n))
+      box_position[1]=j
+      # if the prisoner open the first box,and is not successful. Then the prisoner should go to the box with the number of the first box.
+      while (box[box_position[num_of_open]]!=j){
+        num_of_open=num_of_open+1
+        box_position[num_of_open+1]=box[box_position[num_of_open]]
+      }
+      num_of_count[i,num_of_open]=1
+    }
+  }
+  return(colSums(num_of_count)/nreps) #calcualte the probability
+}
+dloop(50,10000)
+system.time(dloop(50,10000))
+
+plot(dloop(50,10000))
+barplot(dloop(50,10000),col ='blue')

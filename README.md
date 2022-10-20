@@ -22,7 +22,7 @@ Pone=function(n,k,strategy,nreps=10000){
     }
     print(a/nreps)
   }
-    
+   #strategy 2 The first box opened was random
    if (strategy==2){
     for (i in c(1:nreps)){
       num_of_open=0   #record the number of open
@@ -37,6 +37,7 @@ Pone=function(n,k,strategy,nreps=10000){
         num_of_success=num_of_success+1
       }
       box = sample(1:n) #Random box placement
+      #repeat nreps'times and calculate the total times of success of each prisoner
     }
     print(num_of_success/nreps)
   }

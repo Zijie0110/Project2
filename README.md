@@ -164,7 +164,13 @@ Pall=function(n,strategy,nreps=10000){
     print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c/nreps))
   }
 }
-
+#Question 3
+Pall(5,1,10000)    
+Pall(50,1,10000)
+Pall(5,2,10000)
+Pall(50,2,10000)
+Pall(5,3,10000)
+Pall(50,3,10000)
 #Question 4
 #It improves their odds of a random chance by nearly 30 orders of mangnitude. 
 

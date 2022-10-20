@@ -56,7 +56,7 @@ Pone=function(n,k,strategy,nreps=10000){
   }
   
 }
-
+# example for n=5 and n=50
 Pone(5,1,1,10000)    
 Pone(50,1,1,10000)
 Pone(5,1,2,10000)

@@ -22,8 +22,8 @@ Pone=function(n,k,strategy,nreps=10000){
     }
     print(a/nreps)
   }
-   #strategy 2 The first box opened was random
-   if (strategy==2){
+  #strategy 2 The first box opened was random
+  if (strategy==2){
     for (i in c(1:nreps)){
       num_of_open=0   #record the number of open
       number=sample(n,1) #choose a box randomly
@@ -47,14 +47,14 @@ Pone=function(n,k,strategy,nreps=10000){
       number=sample(n,n/2)  # open n/2 boxes from n boxes
       if(k %in% box[number]){
         num_of_success=num_of_success+1  
-     }
-     box = sample(1:n)  # pick a box randomly
-     #  open n boxes at random, checking each card for their number
+      }
+      box = sample(1:n)  # pick a box randomly
+      #  open n boxes at random, checking each card for their number
     }
     print(num_of_success/nreps)  # calculate the probability of strategy 3
   }
   
-  }
+}
 
 Pone(500,1,3,10000)    
 Pone(50,1,3,10000)
@@ -173,27 +173,26 @@ Pall(50,3,10000)
 #It improves their odds of a random chance by nearly 30 orders of mangnitude. 
 
 #question 5
-dloop=function(n,nreps) {
-  num_of_prisoners=c(1:(2*n))
-  num_of_count=matrix(0,nrow=nreps,ncol=(2*n)) #create a all-0 matirx with nrep rows and 2*n columns)
+dloop=function(n,nreps){
+  prisoners=c(1:(2*n))
+  count_set=matrix(0,nrow=nreps,ncol=(2*n))
   for (i in 1:nreps){
-    box=sample(1:(2*n)) #pick a number randomly
-    for (j in num_of_prisoners){
-      num_of_open=1
-      box_position=vector(length=(2*n))
-      box_position[1]=j
-      # if the prisoner open the first box,and is not successful. Then the prisoner should go to the box with the number of the first box.
-      while (box[box_position[num_of_open]]!=j){
-        num_of_open=num_of_open+1
-        box_position[num_of_open+1]=box[box_position[num_of_open]]
+    card=sample(1:(2*n),size=2*n,replace=FALSE)
+    for (k in prisoners){
+      card_index=vector(length=(2*n))
+      card_index[1]=k
+      times=1
+      while(card[card_index[times]]!=k){
+        card_index[times+1]=card[card_index[times]]
+        times=times+1
       }
-      num_of_count[i,num_of_open]=1
+      count_set[i,times]=1
     }
   }
-  return(colSums(num_of_count)/nreps) #calcualte the probability
+  return(colSums(count_set)/nreps)
 }
 dloop(50,10000)
-system.time(dloop(50,10000))
 
-plot(dloop(50,10000))
+
+#Question 6
 barplot(dloop(50,10000),col ='blue')

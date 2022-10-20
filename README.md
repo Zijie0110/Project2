@@ -60,6 +60,8 @@ Pone(500,1,3,10000)
 Pone(50,1,3,10000)
 Pone(5,1,3,10000)
 
+#Question 4
+#It improves their odds of a random chance by nearly 30 orders of mangnitude. 
 
 #question 5
 dloop=function(n,nreps) {

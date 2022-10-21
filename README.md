@@ -7,6 +7,7 @@ Pone=function(n,k,strategy,nreps=10000){
   N=2*n #total number of prisoners
   box=sample(1:N) #choose boxes randomly
   num_of_success = 0 #record the number of success
+  #strategy 1 The first box opened was the prisoner's number
   if (strategy==1){  # begin with strategy 1
     for (i in c(1:nreps)){
       num_of_open=1   #record the number of open
@@ -42,7 +43,7 @@ Pone=function(n,k,strategy,nreps=10000){
     }
     print(paste0('the probability of a single prisoner succeeding in finding their number:',num_of_success/nreps)) # calculate the probability of strategy 2
   }
-  
+  #strategy 3 Open n boxes randomly
   if (strategy==3){  # begin with strategy 3
     for(i in c(1:nreps)){
       number=sample(N,n)  # open n boxes from total N boxes

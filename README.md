@@ -21,7 +21,7 @@ Pone=function(n,k,strategy,nreps=10000){
       }
       box = sample(1:N)
     }
-    print(num_of_success/nreps)
+    print(paste0('the probability of a single prisoner succeeding in finding their number:',num_of_success/nreps))
   }
   #strategy 2 The first box opened was random
   if (strategy==2){
@@ -40,7 +40,7 @@ Pone=function(n,k,strategy,nreps=10000){
       box = sample(1:N) #Random box placement
       #repeat nreps'times and calculate the total times of success of each prisoner
     }
-    print(num_of_success/nreps)
+    print(paste0('the probability of a single prisoner succeeding in finding their number:',num_of_success/nreps))
   }
   
   if (strategy==3){  # begin with strategy 3
@@ -52,7 +52,7 @@ Pone=function(n,k,strategy,nreps=10000){
       box = sample(1:N)  # pick a box randomly
       #  open n boxes at random, checking each card for their number
     }
-    print(num_of_success/nreps)  # calculate the probability of strategy 3
+    print(paste0('the probability of a single prisoner succeeding in finding their number:',num_of_success/nreps))  # calculate the probability of strategy 3
   }
   
 }

@@ -82,6 +82,7 @@ success=function(n,k,strategy,box){
         num_of_success=1 #prisoner success
       }
       return(num_of_success)
+      # return the value of num_of_success to measure whether it is successful
     }
     #strategy 2 The first box opened was random
     if(strategy==2){
@@ -95,6 +96,7 @@ success=function(n,k,strategy,box){
         num_of_success=1 #prisoner Success
       }
       return(num_of_success)
+      # return the value of num_of_success to measure whether it is successful
     }
     #strategy 3 Open n boxes randomly
     if(strategy==3){
@@ -103,9 +105,11 @@ success=function(n,k,strategy,box){
         num_of_success=1
       }
       return(num_of_success)
+      # return the value of num_of_success to measure whether it is successful
     }
   }else
     return("wrong")
+    # Return wrong when the prisoner number is greater than the total number
 }
 
 Pall=function(n,strategy,nreps=10000){

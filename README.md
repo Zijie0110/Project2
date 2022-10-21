@@ -131,7 +131,7 @@ Pall=function(n,strategy,nreps=10000){
     box=sample(1:N) 
     #repeat nreps times，calculate the total times of success of all prisoners
     }
-    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c / nreps))
+    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c / nreps)) # calculate the probability of strategy 1
   }
   #strategy 2 The first box opened was random
   if(strategy==2){
@@ -148,7 +148,7 @@ Pall=function(n,strategy,nreps=10000){
      box=sample(1:N) 
      #repeat nreps times，calculate the total times of success of all prisoners
     }
-    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c/nreps))
+    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c/nreps)) # calculate the probability of strategy 2
   }
   #strategy 3 Open n boxes randomly
   if(strategy==3){
@@ -165,7 +165,7 @@ Pall=function(n,strategy,nreps=10000){
      box=sample(1:N)
      #repeat nreps times，calculate the total times of success of all prisoners
     }
-    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c/nreps))
+    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c/nreps)) # calculate the probability of strategy 3
   }
 }
 #Question 3
@@ -183,7 +183,7 @@ Pall(50,3,10000)
 
 #question 5
 dloop=function(n,nreps) {
-  N=2*n
+  N=2*n #total number of prisoners
   num_of_prisoners=c(1:N)
   num_of_count=matrix(0,nrow=nreps,ncol=(N)) #create a all-0 matirx with nrep rows and 2*n columns)
   for (i in 1:nreps){

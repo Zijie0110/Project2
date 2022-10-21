@@ -127,7 +127,7 @@ Pall=function(n,strategy,nreps=10000){
     box=sample(1:N) 
     #repeat nreps times，calculate the total times of success of all prisoners
     }
-    print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c / nreps))
+    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c / nreps))
   }
   #strategy 2 The first box opened was random
   if(strategy==2){
@@ -144,7 +144,7 @@ Pall=function(n,strategy,nreps=10000){
      box=sample(1:N) 
      #repeat nreps times，calculate the total times of success of all prisoners
     }
-    print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c/nreps))
+    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c/nreps))
   }
   #strategy 3 Open n boxes randomly
   if(strategy==3){
@@ -161,7 +161,7 @@ Pall=function(n,strategy,nreps=10000){
      box=sample(1:N)
      #repeat nreps times，calculate the total times of success of all prisoners
     }
-    print(paste0('The probability of a prisoner succeeding in finding the prisoner number:',c/nreps))
+    print(paste0('The probability of all prisoner succeeding in finding the prisoner number:',c/nreps))
   }
 }
 #Question 3
